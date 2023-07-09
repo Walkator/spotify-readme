@@ -145,14 +145,14 @@
                 }
             </style>
             <main>
-                {% if scan_code %}
-                    <img class="scan-code" src="data:image/png;base64, {{scan_code}}" alt="Scan Code" />
-                {% endif %}
                 <div> 
                     <div>
                         Listening to <span>{{song}}</span> by <span>{{artist}}</span> on Spotify
                     </div>
                 </div>
+                {% if scan_code %}
+                    <img class="scan-code" src="data:image/png;base64, {{scan_code}}" alt="Scan Code" />
+                {% endif %}
                 <aside>
                     <img class="cover" src="data:image/png;base64, {{image}}" alt="Cover Image" />
                     <section>
