@@ -1,5 +1,5 @@
 <svg width="495" height="160" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <foreignObject width="495" height="160">
+    <foreignObject width="1295" height="160">
         <div xmlns="http://www.w3.org/1999/xhtml" class="container">
             <style>
                 /* CSS Reset */
@@ -9,18 +9,12 @@
                     border: 0;
                     font-size: 100%;
                     font: inherit;
-                    vertical-align: baseline;
                 }
                 /* Actual Styles */
                 main {
                     display: flex;
                     padding: 20px;
                     border-radius: 5px;
-                    {% if theme == 'dark' %}
-                        background: #161B22;
-                    {% else %}
-                        background: #F6F8FA;
-                    {% endif %}
                 }
                 .scan-code {
                     transform-origin: top right;
@@ -43,7 +37,8 @@
                 .cover {
                     width: 120px;
                     height: 120px;
-                    {% if spin %}                    border-radius: 50%;
+                    {% if spin %}                   
+                    border-radius: 50%;
                     animation: spin 0ms -800ms linear infinite;
                     animation-duration: 10s;
                     {% else %}
@@ -59,7 +54,6 @@
                     padding-left: 20px;
                     width: 100%;
                     display: flex;
-                    flex-direction: column;
                     justify-content: space-between;
                     align-items: center;
                 }
@@ -145,10 +139,9 @@
                 }
             </style>
             <main>
-                <div> 
-                    <div>
-                        Listening to <span>{{song}}</span> by <span>{{artist}}</span> on Spotify
-                    </div>
+                <div>
+                    <img class="logo" src="data:image/png;base64, {{logo}}" alt="Spotify Logo" />
+                    Listening to <span>{{song}}</span> by <span>{{artist}}</span> on Spotify
                 </div>
                 {% if scan_code %}
                     <img class="scan-code" src="data:image/png;base64, {{scan_code}}" alt="Scan Code" />
