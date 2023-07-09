@@ -148,12 +148,12 @@
                 {% if scan_code %}
                     <img class="scan-code" src="data:image/png;base64, {{scan_code}}" alt="Scan Code" />
                 {% endif %}
-                <aside>
-                    <div> 
-                        <div class="text-white absolute font-bold bottom-0 lg:right-0 text-green-500 text-sm opacity-50 text-center">
-                            Listening to <span class="italic">{{song}}</span> by <span class="italic">{{artist}}</span> on Spotify
-                        </div>
+                <div> 
+                    <div>
+                        Listening to <span>{{song}}</span> by <span>{{artist}}</span> on Spotify
                     </div>
+                </div>
+                <aside>
                     <img class="cover" src="data:image/png;base64, {{image}}" alt="Cover Image" />
                     <section>
                         <div class="info">
