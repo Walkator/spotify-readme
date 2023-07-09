@@ -149,11 +149,9 @@
                     <img class="scan-code" src="data:image/png;base64, {{scan_code}}" alt="Scan Code" />
                 {% endif %}
                 <aside>
-                    <div class="relative w-full flex justify-center items-center"> 
-                        <div class="manrope text-white p-8 absolute font-bold bottom-0 lg:right-0 text-green-500 text-sm opacity-50 text-center">
-                          <font-awesome-icon class="mr-1" :icon="['fab', 'spotify']" /> Listening to
-                          <span class="italic">{{song}}</span> by <span class="italic">{{artist}}
-                          on Spotify
+                    <div> 
+                        <div class="text-white absolute font-bold bottom-0 lg:right-0 text-green-500 text-sm opacity-50 text-center">
+                            Listening to <span class="italic">{{song}}</span> by <span class="italic">{{artist}}</span> on Spotify
                         </div>
                     </div>
                     <img class="cover" src="data:image/png;base64, {{image}}" alt="Cover Image" />
