@@ -35,8 +35,8 @@
                     {% endif %}
                 }
                 .cover {
-                    width: 120px;
-                    height: 120px;
+                    width: 24px;
+                    height: 24px;
                     {% if spin %}                   
                     border-radius: 50%;
                     animation: spin 0ms -800ms linear infinite;
@@ -108,6 +108,13 @@
                     display: flex;
                     animation: rainbow 0ms -800ms linear infinite;
                 }
+                .desc {
+                    color: #1DB954;
+                    font-weight: bold;
+                }
+                .details {
+                    font-style: italic;
+                }
                 .bar {
                     border-radius: 3px 3px 0 0;
                     height: 30px;
@@ -141,7 +148,7 @@
             <main>
                 <div>
                     <img class="logo" src="data:image/png;base64, {{logo}}" alt="Spotify Logo" />
-                    Listening to <span>{{song}}</span> by <span>{{artist}}</span> on Spotify
+                    <p class="desc">Listening to <img class="cover" src="data:image/png;base64, {{image}}" alt="Cover Image" /> <span class="details">{{song}}</span> by <span class="details">{{artist}}</span> on Spotify</p>
                 </div>
                 {% if scan_code %}
                     <img class="scan-code" src="data:image/png;base64, {{scan_code}}" alt="Scan Code" />
