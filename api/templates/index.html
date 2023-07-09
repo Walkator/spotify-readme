@@ -44,11 +44,6 @@
                     {% else %}
                     border-radius: 10px;
                     {% endif %}
-                    {% if theme == 'dark' %}
-                        box-shadow: 0 0 10px 5px #1b2027;
-                    {% else %}
-                        box-shadow: 0 0 10px 5px #f1f3f5;
-                    {% endif %}
                 }
                 section {
                     padding-left: 20px;
@@ -111,9 +106,11 @@
                 .desc {
                     color: #1DB954;
                     font-weight: bold;
+                    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
                 }
                 .details {
                     font-style: italic;
+                    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
                 }
                 .bar {
                     border-radius: 3px 3px 0 0;
@@ -150,11 +147,7 @@
                     <img class="logo" src="data:image/png;base64, {{logo}}" alt="Spotify Logo" />
                     <p class="desc">Listening to <img class="cover" src="data:image/png;base64, {{image}}" alt="Cover Image" /> <span class="details">{{song}}</span> by <span class="details">{{artist}}</span> on Spotify</p>
                 </div>
-                {% if scan_code %}
-                    <img class="scan-code" src="data:image/png;base64, {{scan_code}}" alt="Scan Code" />
-                {% endif %}
                 <aside>
-                    <img class="cover" src="data:image/png;base64, {{image}}" alt="Cover Image" />
                     <section>
                         <div class="info">
                             <div class="top">
