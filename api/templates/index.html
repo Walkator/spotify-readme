@@ -1,4 +1,4 @@
-<svg width="495" height="160" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="1295" height="160" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <foreignObject width="1295" height="160">
         <div xmlns="http://www.w3.org/1999/xhtml" class="container">
             <style>
@@ -147,22 +147,9 @@
                     <img class="logo" src="data:image/png;base64, {{logo}}" alt="Spotify Logo" />
                     <p class="desc">Listening to <img class="cover" src="data:image/png;base64, {{image}}" alt="Cover Image" /> <span class="details">{{song}}</span> by <span class="details">{{artist}}</span> on Spotify</p>
                 </div>
-                <aside>
-                    <section>
-                        <div class="info">
-                            <div class="top">
-                                {% if not scan_code %}
-                                    <img class="logo" src="data:image/png;base64, {{logo}}" alt="Spotify Logo" />
-                                {% endif %}
-                                <h1>{{song}}</h1>
-                            </div>
-                            <p>{{artist}}</p>
-                        </div>
-                        <div class="bar-container">
-                            {{bars|safe}}
-                        </div>
-                    </section>
-                </aside>
+                <div class="bar-container">
+                    {{bars|safe}}
+                </div>
             </main>
         </div>
     </foreignObject>
