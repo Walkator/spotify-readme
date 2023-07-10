@@ -1,5 +1,5 @@
-<svg width="1295" height="160" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <foreignObject width="1295" height="160">
+<svg width="500" height="40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <foreignObject width="500" height="40">
         <div xmlns="http://www.w3.org/1999/xhtml" class="container">
             <style>
                 /* CSS Reset */
@@ -13,19 +13,13 @@
                 /* Actual Styles */
                 main {
                     display: flex;
-                    padding: 20px;
                     border-radius: 5px;
+                    align-items: center;
                 }
                 .cover {
                     width: 24px;
                     height: 24px;
-                    {% if spin %}                   
-                    border-radius: 50%;
-                    animation: spin 0ms -800ms linear infinite;
-                    animation-duration: 10s;
-                    {% else %}
-                    border-radius: 10px;
-                    {% endif %}
+                    border-radius: 12px;
                 }
                 .info {
                     margin-top: 16px;
@@ -38,23 +32,6 @@
                     display: flex;
                     align-items: center;
                 }
-                h1 {
-                    font-size: 20px;
-                    font-weight: 600;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                    display: block;
-                    overflow: hidden;
-                    max-width: 260px;
-                    {% if not scan_code %}
-                        margin-left: 10px;
-                    {% endif %}
-                    {% if theme == 'dark' %}
-                        color: aliceblue;
-                    {% else %}
-                        color: #161B22;;
-                    {% endif %}
-                }
                 p {
                     margin-top: 5px;
                     font-size: 18px;
@@ -64,11 +41,6 @@
                     display: block;
                     overflow: hidden;
                     max-width: 260px;
-                    {% if theme == 'dark' %}
-                        color: rgba(240, 248, 255, calc(2/3));
-                    {% else %}
-                        color: rgba(22, 27, 34, calc(2/3));
-                    {% endif %}
                 }
                 .logo {
                     width: 24px;
@@ -80,11 +52,13 @@
                 }
                 .content {
                     display: inline;
+                    padding-left: 6px;
+                    padding-right: 6px;
                 }
                 .desc {
                     color: #1DB954;
                     display: inline;
-                    font-weight: bold;
+                    font-size: small;
                     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
                 }
                 .details {
@@ -101,12 +75,6 @@
                 .bar:not(:first-child) {
                     margin-left: 1px;
                 }
-                @keyframes spin {
-                    100% { transform: rotate(360deg) }
-                }
-                @keyframes rainbow {
-                    100% { filter: hue-rotate(360deg) }
-                }
                 @keyframes resize {
                     0% {
                         transform: scaleY(0);
@@ -120,7 +88,7 @@
             <main>
                 <img class="logo" src="data:image/png;base64, {{logo}}" alt="Spotify Logo" />
                 <div class="content">
-                    <p class="desc">Listening to <img class="cover" src="data:image/png;base64, {{image}}" alt="Cover Image" /> <span class="details">{{song}}</span> by <span class="details">{{artist}}</span> on Spotify</p>
+                    <p class="desc">Listening to <!--<img class="cover" src="data:image/png;base64, {{image}}" alt="Cover Image"/>--> <span class="details">{{song}}</span> by <span class="details">{{artist}}</span> on Spotify</p>
                 </div>
                 <div class="bar-container">
                     {{bars|safe}}
