@@ -85,7 +85,6 @@ def make_svg():
             "artist": item["artists"][0]["name"].replace("&", "&amp;"),
             "song": item["name"].replace("&", "&amp;"),
             "image": image,
-            "scan_code": scan_code if scan_code != "" else B64_PLACEHOLDER_SCAN_CODE,
             "logo": B64_SPOTIFY_LOGO,
         },
     )

@@ -1,15 +1,10 @@
 <div align="center">
   <img src="assets/spotify.svg" width="100" align="center">
   <h1>Spotify Readme</h1>
-
-  [![Badge](https://img.shields.io/github/issues/tthn0/Spotify-Readme?style=for-the-badge)](https://github.com/tthn0/Spotify-Readme/issues)
-  [![Badge](https://img.shields.io/github/forks/tthn0/Spotify-Readme?style=for-the-badge)](https://github.com/tthn0/Spotify-Readme/network)
-  [![Badge](https://img.shields.io/github/stars/tthn0/Spotify-Readme?style=for-the-badge)](https://github.com/tthn0/Spotify-Readme/stargazers)
-
 </div>
 
 <p align="center">
-  A dynamic, customizable, and real-time Spotify now-playing widget for your README files that syncs with the song you’re currently playing. If you're not currently playing a song, it'll display one of your recent songs! Feel free to ask for help or make any PRs/issues/suggestions 😄
+  A dynamic, simple and real-time Spotify Play Now widget for your README files that syncs with the currently playing song. If you're not currently playing a song, one of your recent songs will be displayed! Feel free to ask for help or ask any PR/problem/suggestion 😄
 </p>
 
 ## Previews
@@ -18,9 +13,7 @@
 ```
 /api
 ```
-![Preview](asse)
 ![setup-screenshot](assets/preview.png)
-
 
 
 ## Setup/Deployment
@@ -87,29 +80,12 @@ https://accounts.spotify.com/authorize?client_id={CLIENT_ID}&response_type=code&
 
 * In any markdown file, add the following (replace `{PROJECT_NAME}` with the name you gave your Vercel project):
 
-  ```html
-  <a href="https://github.com/tthn0/Spotify-Readme">
-    <img src="https://{PROJECT_NAME}.vercel.app/api" alt="Current Spotify Song">
-  </a>
-  ```
-
-* Please leave the anchor tag hyperlink reference to this GitHub repo to retain creator credit and for other users to find! 
-
-## Customization
-
-<p>
-  To customize the widget, add query parameters to the endpoint. There are many possible combinations! See how it pairs with other widgets on <a href="https://github.com/tthn0/tthn0">my own README</a>! (If you're on mobile and have a small screen, use a desktop browser or change the zoom level to zoom out.)
-</p>
-
-| Parameter | Default | Values          |
-| :-------- | :------ | :-------------- |
-| `spin`    | `false` | `false`, `true` |
-| `scan`    | `false` | `false`, `true` |
-| `theme`   | `light` | `light`, `dark` |
-| `rainbow` | `false` | `false`, `true` |
+```html
+<img src="https://{PROJECT_NAME}.vercel.app/api" alt="Current Spotify Song">
+```
 
 ## Note
 
 This wasn't a completely original idea. This was inspired by <a href="https://github.com/novatorem/novatorem">novatorem's project</a> that was supposed to be for me only. Since others have asked for the source code, I decided to make this a public repo. I also incorporated the latest two PR's from the orignal project into this one and made it easy to customize!
 
-<sub>**This website is a fork of [bchiang7](https://github.com/tthn0)**</sub>
+<sub>**This feature is a fork of [tthn0](https://github.com/tthn0)**</sub>
