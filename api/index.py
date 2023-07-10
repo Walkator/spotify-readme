@@ -97,15 +97,20 @@ def make_svg(spin, scan, theme, rainbow):
     if data:
         item = data["item"]
     else:
-        item = spotify_request("me/player/recently-played?limit=1")["items"][0]["track"]
+        item = spotify_request(
+            "me/player/recently-played?limit=1")["items"][0]["track"]
 
     if item["album"]["images"] == []:
         image = B64_PLACEHOLDER_IMAGE
     else:
         image = load_image_base64(item["album"]["images"][1]["url"])
-:
-    bar_count = 12
-    scan_code = None
+
+    if scan and scan != "false" and scan != "0":
+        bar_count = 10
+        scan_code = get_scan_code(item["uri"])
+    else:
+        bar_count = 12
+        scan_code = None
 
     return render_template(
         "index.html",
@@ -114,6 +119,9 @@ def make_svg(spin, scan, theme, rainbow):
             "artist": item["artists"][0]["name"].replace("&", "&amp;"),
             "song": item["name"].replace("&", "&amp;"),
             "image": image,
+            "scan_code": scan_code if scan_code != "" else B64_PLACEHOLDER_SCAN_CODE,
+            "theme": theme,
+            "spin": spin,
             "logo": B64_SPOTIFY_LOGO,
         },
     )
@@ -126,7 +134,12 @@ app = Flask(__name__)
 @app.route("/<path:path>")
 def catch_all(path):
     resp = Response(
-        make_svg(),
+        make_svg(
+            request.args.get("spin"),
+            request.args.get("scan"),
+            request.args.get("theme"),
+            request.args.get("rainbow"),
+        ),
         mimetype="image/svg+xml",
     )
     resp.headers["Cache-Control"] = "s-maxage=1"
