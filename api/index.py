@@ -41,39 +41,16 @@ def spotify_request(endpoint):
     return {} if r.status_code == 204 else r.json()
 
 
-def generate_bars(bar_count, rainbow):
+def generate_bars(bar_count):
     """Build the HTML/CSS snippets for the EQ bars to be injected"""
     bars = "".join(["<div class='bar'></div>" for _ in range(bar_count)])
     css = "<style>"
-    if rainbow and rainbow != "false" and rainbow != "0":
-        css += ".bar-container { animation-duration: 2s; }"
-    spectrum = [
-        "#ff0000",
-        "#ff4000",
-        "#ff8000",
-        "#ffbf00",
-        "#ffff00",
-        "#bfff00",
-        "#80ff00",
-        "#40ff00",
-        "#00ff00",
-        "#00ff40",
-        "#00ff80",
-        "#00ffbf",
-        "#00ffff",
-        "#00bfff",
-        "#0080ff",
-        "#0040ff",
-        "#0000ff",
-        "#4000ff",
-        "#8000ff",
-        "#bf00ff",
-        "#ff00ff",
-    ]
+    css += ".bar-container { animation-duration: 2s; }"
+
     for i in range(bar_count):
         css += f""".bar:nth-child({i + 1}) {{
                 animation-duration: {randint(500, 750)}ms;
-                background: {spectrum[i] if rainbow and rainbow != 'false' and rainbow != '0' else '#24D255'};
+                background: {'#24D255'};
             }}"""
     return f"{bars}{css}</style>"
 
@@ -84,14 +61,7 @@ def load_image_base64(url):
     return b64encode(resposne.content).decode("ascii")
 
 
-def get_scan_code(spotify_uri):
-    """Get the track code for a song"""
-    return load_image_base64(
-        f"https://scannables.scdn.co/uri/plain/png/000000/white/640/{spotify_uri}"
-    )
-
-
-def make_svg(spin, scan, theme, rainbow):
+def make_svg():
     """Render the HTML template with variables"""
     data = spotify_request("me/player/currently-playing")
     if data:
@@ -105,23 +75,17 @@ def make_svg(spin, scan, theme, rainbow):
     else:
         image = load_image_base64(item["album"]["images"][1]["url"])
 
-    if scan and scan != "false" and scan != "0":
-        bar_count = 10
-        scan_code = get_scan_code(item["uri"])
-    else:
-        bar_count = 12
-        scan_code = None
+    bar_count = 12
+    scan_code = None
 
     return render_template(
         "index.html",
         **{
-            "bars": generate_bars(bar_count, rainbow),
+            "bars": generate_bars(bar_count),
             "artist": item["artists"][0]["name"].replace("&", "&amp;"),
             "song": item["name"].replace("&", "&amp;"),
             "image": image,
             "scan_code": scan_code if scan_code != "" else B64_PLACEHOLDER_SCAN_CODE,
-            "theme": theme,
-            "spin": spin,
             "logo": B64_SPOTIFY_LOGO,
         },
     )
@@ -134,12 +98,7 @@ app = Flask(__name__)
 @app.route("/<path:path>")
 def catch_all(path):
     resp = Response(
-        make_svg(
-            request.args.get("spin"),
-            request.args.get("scan"),
-            request.args.get("theme"),
-            request.args.get("rainbow"),
-        ),
+        make_svg(),
         mimetype="image/svg+xml",
     )
     resp.headers["Cache-Control"] = "s-maxage=1"
